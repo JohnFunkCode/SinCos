@@ -1,1 +1,1 @@
-# SincCos
+# SinCos
