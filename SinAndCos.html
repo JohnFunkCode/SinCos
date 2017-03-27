@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+  	function draw() {
+      var canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+
+		// establish a new origin  
+		ctx.translate(100,100) ;
+
+		//draw axis
+		ctx.beginPath() ;
+		ctx.moveTo(0,-100);
+		ctx.lineTo(0,100);
+		ctx.moveTo(-100,0);
+		ctx.lineTo(100,0);
+		ctx.strokeStyle = "black";
+		ctx.stroke() ;
+			
+		// plot sin(x) 
+		ctx.beginPath();
+		for(var i=-100;i<100;i++){
+			yy=Math.sin(i*.1)*50;
+			ctx.lineTo(i,yy);
+		}
+		ctx.strokeStyle = "green";
+		ctx.stroke() ;
+
+	    // plot cos(x) 
+		ctx.beginPath();
+		for(var i=-100;i<100;i++){
+			yy=Math.cos(i*.1)*50;
+			ctx.lineTo(i,yy);
+		}
+		ctx.strokeStyle = "blue";
+		ctx.stroke() ;
+
+		// plot sin(x) against cos(x)
+		ctx.beginPath();
+		for(var i=0;i<64;i++){
+			yy=Math.sin(i*.1)*50;
+			xx=Math.cos(i*.1)*50;
+			ctx.lineTo(xx,yy);
+		}
+		ctx.strokeStyle = "red";
+		ctx.stroke() ;
+
+      }
+    }
+  </script>
+ </head>
+ <body onload="draw();">
+   <canvas id="canvas" width="200" height="200"></canvas>
+ </body>
+</html>
